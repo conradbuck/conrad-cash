@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en-US">
+
+<head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+<!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>Conrad Buck's project website</title>
+<meta name="generator" content="Jekyll v3.10.0">
+<meta property="og:title" content="Conrad Buck's project website">
+<meta property="og:locale" content="en_US">
+<meta name="description" content="A showcase of Conrad's projects">
+<meta property="og:description" content="A showcase of Conrad's projects">
+<link rel="canonical" href="https://conradbuck.github.io/conrad-cash/">
+<meta property="og:url" content="https://conradbuck.github.io/conrad-cash/">
+<meta property="og:site_name" content="conrad-cash">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary">
+<meta property="twitter:title" content="Conrad Buck's personal website">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebSite","description":"Conrad's project collection","headline":"Conrad's Portfolio","name":"conrad-cash","url":"https://conradbuck.github.io/conrad-cash/"}</script>
+<!-- End Jekyll SEO tag -->
+
+<!-- <link rel="stylesheet" href="{{ 'css/style.css' | relative_url }}"> -->
+<link rel="stylesheet" href="https://conradbuck.github.io/nice-club/css/style.css">
+    <!-- start custom head snippets, customize with your own _includes/head-custom.html file -->
+
+<!-- You can set your favicon here -->
+
+<link rel="shortcut icon" type="image/x-icon" href="https://lh4.googleusercontent.com/fLWvFh-uJrcU-pdTyQKXA2TYL9Q2aeN24Sib-oVRMmILBbWJO7WCebNQw948pzTNrz-pRbCdGWkBfs2yhpvysvVEl5rjzcRV6YjQ44IbIMWSuuHXwA4k0KZGVqldPMAARA=w1280">
+
+<!-- end custom head snippets -->
+
+</head>
+
+<body>
+<div class="banner">
+  <img src="https://lh3.googleusercontent.com/T1qXYY7BatUY4D4mQ8KiSvjoyn58iZwpD0v8XN6SPfNMlfSBko6zGkQ1K3n2_Eb7tC5-M4E8dz17m85vPk3rOqQfVVK8_KSAarNDBeWYT6xlnf6xugDJSw0K62RcIXogQw=w1280" alt="funny gif">
+  </div>
+<div class="contadiner-lg px-3 my-5">
+    <h4><a href="https://conrad.cash"><< Back to home</a></h4>
+
+    <h1>Embedded Systems Code snippets</h1>
+    <p>Use this code to make your hardware interfaces more responsive on your embedded systems projects.</p>
+
+    <h3>Rotary Encoder</h3>
+    <pre><code>
+        #define PUSH 5 //button pin, GPIO
+        #define LONG_PRESS 700 //long press length in ms (best 700-1200)
+
+        unsigned long difference;
+        bool longPress = false;
+
+        void setup() {
+            pinMode(PUSH, INPUT_PULLUP);
+            //connect other button pin to ground
+            difference = millis();
+        }
+
+        void loop() {
+            if(!digitalRead(PUSH)) {
+                difference = millis();
+                longPress = false;
+                while(!digitalRead(PUSH)) {
+                    if(millis() - difference > LONG_PRESS) {
+                        longPress = true;
+                        //put code that activates when a long press is detected here
+                        while(!digitalRead); //ensures that longPress code only runs once
+                    }
+                }
+                if(!longPress) {
+                   //put short press code here
+                }
+                delay(20); //simple delay to ingore switch rebounce
+            }
+        }
+    </code></pre>
+    <h3>Momentary Button</h3>
+    <pre><code>
+        #define LEFT 2
+        #define RIGHT 3
+
+        int ticker = 0;
+        int delta;
+        uint8_t lrmem = 3;
+        int lrsum = 0;
+        int rotary() {
+            static int8_t TRANS[] = {0, -1, 1, 14, 1, 0, 14, -1, -1, 14, 0, 1, 14, 1, -1, 0};
+            int8_t l, r;
+            l = digitalRead(LEFT);
+            r = digitalRead(RIGHT);
+            lrmem = ((lrmem & 0x03) << 2) + 2 * l + r;
+            lrsum = lrsum + TRANS[lrmem];
+            if (lrsum % 2 != 0) { //change 2 to 4 if encoder double counts
+                return (0);
+            }
+            if (lrsum == 2) { //change 2 to 4 if encoder double counts
+                lrsum = 0;
+                return (1);
+            }
+            if (lrsum == -2) { //change 2 to 4 if encoder double counts
+                lrsum = 0;
+                return (-1);
+            }
+            /* lrsum > 0 if the impossible transition */
+            lrsum = 0;
+            return (0);
+        }
+
+        void setup() {
+            //3 pin side of rotary encoder
+            pinMode(LEFT, INPUT_PULLUP); //outer pin to microcontroller
+            pinMode(RIGHT, INPUT_PULLUP); //outer pin to microcontroller
+            //central pin connects to ground
+
+            //2 pin side of rotary encoder
+            //initialize push switch pin as INPUT_PULLUP
+            //connect the other pin to ground
+        }
+        void loop() {
+            delta = rotary();
+            ticker += delta;
+            if(delta != 0) { //delta will automatically reset to 0 next time rotary() is called
+                Serial.println(ticker); 
+            }
+        }
+    </code></pre>
+
+</div>
+</body>

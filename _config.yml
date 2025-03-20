@@ -1,0 +1,6 @@
+exclude:
+  - README.md
+
+# Include css directory so Jekyll serves CSS files
+include:
+  - "css"
