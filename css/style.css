@@ -3,6 +3,33 @@
   -ms-text-size-adjust:100%;
   -webkit-text-size-adjust:100%
 }
+
+.gallery {
+  display: grid;
+  grid-template-columns: 1;
+  gap: 20px;
+  margin: 20px 0;
+  place-items: center;
+}
+.gallery-item {
+  text-align: center;
+}
+.gallery img {
+  width: 60%;
+  height: auto;
+  aspect-ratio: 1 / 1; /* Forces images to be square */
+  object-fit: cover;   /* Ensures the image is cropped appropriately */
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.1);
+}
+
+.content-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr; /* Allocates proper space */
+  gap: 30px; /* Keeps elements close */
+}
+
 .banner {
   width: 100%;               /* Makes the banner span the full width */
   height: 300px;             /* Controls the height of the banner */
