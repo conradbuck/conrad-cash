@@ -1,0 +1,47 @@
+/*
+ * I asked chatgpt to generate html from this text file 
+ * Prompt: convert this text excerpt into nicely formatted html that I can drop into my website page. use bullet point lists, paragraph, and headers accordingly
+ */
+
+ChatGPT for hardware, generate your first physical prototype with AI
+
+UX: Drop in a datasheet for all the parts you are using and it will generate firmware and wiring schematics to get you started. Or describe your product vision and gpt will suggest parts to use and generate breadboard designs to help you make the first prototype.
+
+Firmware: chat gpt can already do this but if it can automatically find the right libraries and write a program using them, that would be cool
+
+Hardware: would need to have implementation specific awareness, i.e. if chatgpt notices that the primary data interface with a chip is i2c, it will look for suggested pullup resistor values, if it can’t find any, it would use common values, like 4.7k. (we would need some kind of convention library to inform these decisions)
+
+Would need to default to breadboard mode, provide graphics for wiring schemes, could pretty easily be converted to a PCB generator. [reference image]
+
+AI powered PCB generators exist, but this tool would suggest components and generate prototype designs and firmware that will work out of the box to let you rapidly iterate on your idea. I’m thinking this would be used by Elia making a VR vibration wristband rather than an LG engineer designing an LCD controller. 
+
+One AI PCB generator
+https://www.flux.ai/p
+Problems: its made for people making PCBs and aren’t starting from 0 electronics exp.
+
+Example:
+Prompt: I want to make a vibrational wristband that I can trigger a pulse using my laptop.
+
+Return:
+-suggested parts (with pictures and purchase links)
+  -esp32
+  -haptic motor driver
+  -coin style haptic motor
+-suggested project structure
+  -tells you that the esp will interface with your computer via 
+   bluetooth, maybe generates a block diagram of how each 
+   component integrates with the next
+-wiring diagram showing you how to plug stuff into 
+ breadboard
+  -maybe it throws an LED on there for debugging help, but 
+   adds a note of what it does and why it may not be required 
+   in case you dont have one on hand
+-several firmware files that use a library that works on the 
+ esp32 with the suggested driver chip
+  -first file would be a Hello_world test to see if you wired 
+   everything correctly (it blinks the LED, tries to initialize 
+   driver)
+  -second file is full of building blocks, it includes some 
+   objects that make it easy to interface with the haptic motor 
+   and add on your code as necessary
+-finally generates a script file using python that interfaces with your laptop’s bluetooth chip to connect to the esp32 and send it a command to trigger a pulse on the wristband

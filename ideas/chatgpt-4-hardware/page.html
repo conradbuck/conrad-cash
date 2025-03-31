@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en-US">
+
+<head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>Conrad Buck's project website</title>
+<meta name="generator" content="Jekyll v3.10.0">
+<meta property="og:title" content="Conrad Buck's project website">
+<meta property="og:locale" content="en_US">
+<meta name="description" content="A showcase of Conrad's projects">
+<meta property="og:description" content="A showcase of Conrad's projects">
+<link rel="canonical" href="https://conradbuck.github.io/conrad-cash/">
+<meta property="og:url" content="https://conradbuck.github.io/conrad-cash/">
+<meta property="og:site_name" content="conrad-cash">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary">
+<meta property="twitter:title" content="Conrad Buck's personal website">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebSite","description":"Conrad's project collection","headline":"Conrad's Portfolio","name":"conrad-cash","url":"https://conradbuck.github.io/conrad-cash/"}</script>
+<!-- End Jekyll SEO tag -->
+
+<!-- <link rel="stylesheet" href="{{ 'css/style.css' | relative_url }}"> -->
+<link rel="stylesheet" href="https://conradbuck.github.io/conrad-cash/css/style.css">
+    <!-- start custom head snippets, customize with your own _includes/head-custom.html file -->
+
+<link rel="shortcut icon" type="image/x-icon" href="https://conrad.cash/images/looking-man.gif">
+</head>
+
+<style>
+    .gallery img {
+        width: 40%;
+        height: auto;
+        object-fit: cover;   /* Ensures the image is cropped appropriately */
+        border: 1px solid #ccc;
+        border-radius: 8px;
+        box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.1);
+    }
+</style>
+
+<body>
+<div class="banner">
+  <img src="https://conrad.cash/images/water-explosion.gif" alt="funny explosion gif">
+  </div>
+<div class="container-lg px-3 my-5">
+  
+    <h4><a href="https://conrad.cash"><< Back to home</a></h4>
+
+    <h1>ChatGPT for Hardware: Generate Physical Prototypes</h1>
+
+    <h2>UX vision</h2>
+    <p>Simply drop in the datasheets for all the parts you're using, and GPT will:</p>
+    <ul style="margin-left: 20px;">
+        <li>Generate firmware and wiring schematics to get you started.</li>
+    </ul>
+    <p>Or describe your product vision, and it will:</p>
+    <ul style="margin-left: 20px;">
+        <li>Suggest parts to use.</li>
+        <li>Generate breadboard designs to help you create the first prototype.</li>
+    </ul>
+
+    <h2>Firmware</h2>
+    <p>Generate firmware that will work using the suggested or selected parts</p>
+    <ul style="margin-left: 20px;">
+        <li>Automatically finds the right libraries for your specific hardware architecture.</li>
+        <li>Writes a program using those libraries.</li>
+        <li>Produces test sketches to verify each component one at a time to help with wiring debugginga.</li>
+    </ul>
+
+    <h2>Hardware Awareness</h2>
+    <p>The AI would need to understand implementation-specific details, such as:</p>
+    <ul style="margin-left: 20px;">
+        <li>Detecting a satellite chip’s primary data interface (I2C, SPI, etc.)</li>
+        <li>Looking up necessary additional hardware (pull-up resistor values, decoupling capacitors)</li>
+        <li>If no values are found, defaulting to common values (e.g., 4.7kΩ, 100nF).</li>
+        <li>A convention library would be used to inform design decisions.</li>
+    </ul>
+
+    <h2>Breadboard & PCB Support</h2>
+    <p>The tool would default to <strong>breadboard mode</strong> and produce:</p>
+    <ul style="margin-left: 20px;">
+        <li><a href="https://cdn.sparkfun.com/assets/4/a/1/5/0/518c3efbce395f7162000004.jpg" target="_blank">Graphical wiring schematics for breadboards.</a></li>
+        <li>The ability to easily convert designs into a PCB generator and have some sort of lcsc auto component selection to make jlc ordering and assembly super easy.</li>
+    </ul>
+
+    <h2>Example Use Case</h2>
+    <p>This tool is designed for makers, like Elia building a VR vibration wristband, rather than professional engineers designing complex PCBs.</p>
+
+    <h3>Example Prompt</h3>
+    <p><strong>Prompt:</strong> "I want to make a vibrational wristband that I can trigger with my laptop."</p>
+
+    <h3>AI-Generated Output:</h3>
+    <ul style="margin-left: 20px;">
+        <li><strong>Suggested Parts (with images and purchase links):</strong>
+            <ul style="margin-left: 20px;">
+                <li>ESP32</li>
+                <li>Haptic motor driver</li>
+                <li>Coin-style haptic motor</li>
+            </ul>
+        </li>
+        <li><strong>Suggested Project Structure:</strong>
+            <ul style="margin-left: 20px;">
+                <li>ESP32 interfaces with the computer via Bluetooth.</li>
+                <li>Generates a block diagram showing component integration.</li>
+            </ul>
+        </li>
+        <li><strong>Wiring Diagram:</strong>
+            <ul style="margin-left: 20px;">
+                <li>Shows how to connect everything on a breadboard.</li>
+                <li>Includes an optional LED for debugging, with an explanation of its purpose.</li>
+            </ul>
+        </li>
+        <li><strong>Firmware Files (for MCU (arduino, etc.)):</strong>
+            <ul style="margin-left: 20px;">
+                <li><strong>File 1:</strong> "Hello, World" test to verify wiring (LED blink, driver initialization).</li>
+                <li><strong>File 2:</strong> Firmware with "building block" functions that utilize library drivers to provide simplified functionality to the user.</li>
+            </ul>
+        </li>
+        <li><strong>Python Script (for laptop):</strong>
+            <ul style="margin-left: 20px;">
+                <li>Interfaces with the laptop's Bluetooth chip.</li>
+                <li>Sends commands to trigger pulses on the wristband.</li>
+            </ul>
+        </li>
+    </ul>
+
+
+    <h3>Existing AI PCB Generator</h3>
+    <p>One example is <a href="https://www.flux.ai/p" target="_blank">Flux AI</a>, but it's designed for users already experienced with PCB design, not beginners.</p>
+    <p>While AI-powered PCB generators exist, this tool would:</p>
+    <ul style="margin-left: 20px;">
+        <li>Suggest components.</li>
+        <li>Generate prototype designs and firmware that work out of the box.</li>
+        <li>Enable rapid iteration for makers and hardware enthusiasts.</li>
+    </ul>
+
+    <a href="./raw-brain-dump.txt">raw brain dump text</a>
+</div>
+</body>
