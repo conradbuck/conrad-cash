@@ -3,7 +3,24 @@
   -ms-text-size-adjust:100%;
   -webkit-text-size-adjust:100%
 }
-
+.blog-box {
+  width: 700px;
+  margin: 20px auto;
+  padding: 15px;
+  background-color: #f8f9fa;
+  border-radius: 12px;
+  box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.1);
+  font-family: Arial, sans-serif;
+  margin-top: 20px;
+}
+.blog-box a {
+  display: block;
+  padding: 8px 0;
+  color: #007bff;
+  text-decoration: none;
+  font-weight: bold;
+  border-bottom: 1px solid #ddd;
+}
 .gallery {
   display: grid;
   grid-template-columns: 1;
@@ -4895,7 +4912,7 @@ pre {
 .markdown-body h5 code,
 .markdown-body h6 tt,
 .markdown-body h6 code {
-  font-size:inherit
+  font-size:inheritn
 }
 .markdown-body h1 {
   padding-bottom:0.3em;
