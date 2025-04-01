@@ -32,9 +32,16 @@
 
 <style>
     .gallery img {
-        width: 40%;
+        width: 60%;
         height: auto;
         object-fit: cover;   /* Ensures the image is cropped appropriately */
+        border: 1px solid #ccc;
+        border-radius: 8px;
+        box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.1);
+    }
+    .gallery-item iframe {
+        width: 100%;
+        object-fit: cover;
         border: 1px solid #ccc;
         border-radius: 8px;
         box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.1);
@@ -73,8 +80,12 @@
             </div>
         </div>
         <div>
-            <iframe width="560" height="315" src="https://www.youtube.com/embed/xu43dCIzV90?si=38BJTcSYKz17k39p" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-            <p>I find that my prusa i3 mk3, with 0.2mm layer height and 0.4mm nozzle works best for printing these.</p>
+            <div class="gallery">
+                <div class="gallery-item">
+                    <iframe width="560" height="315" src="https://www.youtube.com/embed/xu43dCIzV90?si=38BJTcSYKz17k39p" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                    <p>I find that my prusa i3 mk3, with 0.2mm layer height and 0.4mm nozzle works best for printing these.</p>
+                </div>
+            </div>
         </div>
     </div>
 
@@ -137,9 +148,12 @@
             </div>
         </div>
         <div>
-            <!--youtube embed of me pushing the knob on-->
-            <iframe width="560" height="315" src="https://www.youtube.com/embed/LtShh-41YuI?si=qq88kKy2roNEDX0w" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-            <p>I greatly apologise that this video is filmed vertically</p>
+            <div class="gallery">
+                <div class="gallery-item">
+                    <iframe width="560" height="315" src="https://www.youtube.com/embed/LtShh-41YuI?si=qq88kKy2roNEDX0w" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                    <p>I greatly apologise that this video is filmed vertically</p>
+                </div>
+            </div>
         </div>
     </div>
     
@@ -159,7 +173,21 @@
         <a href="https://again.framer.ai/buy" target="_blank">See "Sunset Lamp" and "Shape Lamp" here</a>
     </div>
     <h3>COG conscious design</h3>
+    <div class="gallery">
+        <div class="gallery-item">
+            <img src="./sunset-lamp-stand.png" alt="pic of ceiling lamp with sunset stand holder">
+            <p>The mounting threads on the SBLED ceiling lamp can be used to affix the lamp to this table top stand to turn it into a sunset projector.</p>
+        </div>
+        
+    </div>
     <h3>Embossed Logos</h3>
+    <div class="gallery">
+        <div class="gallery-item">
+            <img src="./embo-logo.png" alt="pic of embossed logo">
+            <p>Simple line based logos are easy to emboss onto surfaces and print very cleanly with a Bambu printer.</p>
+        </div>
+        
+    </div>
 
 </div>
 </body>
