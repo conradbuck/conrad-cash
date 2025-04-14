@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en-US">
+
+<head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>Conrad Buck's project website</title>
+<meta name="generator" content="Jekyll v3.10.0">
+<meta property="og:title" content="Conrad Buck's project website">
+<meta property="og:locale" content="en_US">
+<meta name="description" content="A showcase of Conrad's projects">
+<meta property="og:description" content="A showcase of Conrad's projects">
+<link rel="canonical" href="https://conradbuck.github.io/conrad-cash/">
+<meta property="og:url" content="https://conradbuck.github.io/conrad-cash/">
+<meta property="og:site_name" content="conrad-cash">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary">
+<meta property="twitter:title" content="Conrad Buck's personal website">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebSite","description":"Conrad's project collection","headline":"Conrad's Portfolio","name":"conrad-cash","url":"https://conradbuck.github.io/conrad-cash/"}</script>
+<!-- End Jekyll SEO tag -->
+
+<!-- <link rel="stylesheet" href="{{ 'css/style.css' | relative_url }}"> -->
+<link rel="stylesheet" href="https://conrad.cash/css/style.css">
+    <!-- start custom head snippets, customize with your own _includes/head-custom.html file -->
+
+<link rel="shortcut icon" type="image/x-icon" href="https://conrad.cash/images/looking-man.gif">
+</head>
+
+<style>
+    .gallery img {
+        width: 60%;
+        height: auto;
+        object-fit: cover;   /* Ensures the image is cropped appropriately */
+        border: 1px solid #ccc;
+        border-radius: 8px;
+        box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.1);
+    }
+    .gallery-item iframe {
+        width: 100%;
+        object-fit: cover;
+        border: 1px solid #ccc;
+        border-radius: 8px;
+        box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.1);
+    }
+</style>
+
+<body>
+<div class="banner">
+  <img src="https://conrad.cash/images/water-explosion.gif" alt="funny explosion gif">
+  </div>
+<div class="container-lg px-3 my-5">
+  
+    <h4><a href="https://conrad.cash"><< Back to home</a></h4>
+
+    <h1>Soldering Ability Showcase</h1>
+
+    <p>For the longest time I used a $20 soldering iron that had the tip radius of a crayon. I assembled about 30 custom arduino nano boards with this iron. I have since downgraded to an iron that I found in the trash, but it came with several different tips, so it has led to an increase in the precision of my soldering. I will buy a good iron when I need to. That time has not yet come.</p>
+
+    <h3>sbled assembly</h3>
+    <div class="gallery">
+        <div class="gallery-item">
+            <img src="./blank-sbled.jpg">
+        </div>
+        <div class="gallery-item">
+            <img src="./sbled-drivers.jpg">
+            <p>I have assembled 5 of these boards with all 53 components. The atmega chip is challenging because it has high pin density. The PT4115 driver is challenging because it has a large thermal relief pad that is difficult to get hot enough for a good bond. The inductors are difficult because their footprints are almost exactly the size of the package, leaving a small area for the iron to contact and heat it up. (Fully assembled PCB in next image below)</p>
+        </div>
+    </div>
+    <p>Learn more about this lamp and my lighting project <a href="../../projects/silver-system/page.html">here.</a></p>
+
+    <h3>sbled pull up resistor hack fix</h3>
+    <div class="gallery">
+        <div class="gallery-item">
+            <img src="./pullup-hack.jpg">
+            <p></p>
+        </div>
+    </div>
+    <p>I was winging the first iteration of this board. I wanted to make a 10W RGB LED driver board and was copying designs online. Nobody was posting schematics as they were all selling their product that I was trying to make. I reverse engineered their schematics from the <a href="https://www.tindie.com/products/bwinter/10w-rgb-led-ws281x-driver/" target="_blank">product listing pictures</a> and implemented that on my own designs. The WS2811 LED driver that then triggers the high power LED drivers operates in an open sink mode. This chip is meant to operate on the low side of an LED and I didn't consider that in my initial design. I retroactively added pullup resistors to give the voltage differential that the PT4115 drivers required as their input signal since they were looking for more of a PWM type signal rather than a current sink signal.</p>
+
+    <h3>6led remote assembly</h3>
+    <div class="gallery">
+        <div class="gallery-item">
+            <img src="./6led-assem.jpg">
+            <p></p>
+        </div>
+    </div>
+    <p>I have assembled 20 of these boards from a partially assembled state. (I learned my lesson and had the factory put on the decoupling caps and the atmega chip.) I had to add the LEDs on manually as well as the rotary encoder and usb port. I used dessicants and left the LEDs in a warm, dry place before attaching them to the board to avoid damage due to steam formation in the LED while soldering.</p>
+    <a href="https://www.youtube.com/playlist?list=PLIKpy3ZS4VQAUmww-Pp9k2Tf8ek77HN5a" target="_blank">See this remote in action here.</a>
+
+    <h3>iteg rev2 stick pcb</h3>
+    <div class="gallery">
+        <div class="gallery-item">
+            <img src="./iteg-stick-rev2.png">
+            <p>The stick pcbs are the ones on the left.</p>
+        </div>
+    </div>
+    <p>This was an early pcb design in my kicad learning process. I bought 50 blank boards and thought I would have a blast assembling all of them. In the 1.5 years I have had these boards, I've assembled about 30 (with the crayon iron). The most challenging part is attaching the atmega328p chip.</p>
+
+    <h3>DRV2605 Motor Driver Breakout board</h3>
+    <div class="gallery">
+        <div class="gallery-item">
+            <img src="">
+            <p></p>
+        </div>
+    </div>
+    <p>This is the smallest pin pitch that I have ever soldered on. The pins on this chip are 0.5mm apart. I bought <a href="https://www.digikey.com/en/products/detail/artekit-labs/DA-MSOP10-3X3P50/20485369" target="_blank">breakout boards</a> for them so I could breadboard my project design before sending it off to fab. I used my iron to apply small amounts of wire solder onto all 10 pads (I did not have solder paste or a mask at that time) then scraped the iron across their surface to ensure the pads were level. Finally, I used a heat gun while holding the chip onto the breakout board with pliers to heat the solder and attach the chip.</p>
+
+    <h3>Silver System Extension Cable</h3>
+    <div class="gallery">
+        <div class="gallery-item">
+            <img src="./ceiling-lamp-kit.jpg">
+            <p>The cable is the silvery/clear bundle on the right. It has one input port and two output ports, the first next to the input, and the second at the end of the extension wire.</p>
+        </div>
+    </div>
+    <p>I make these splitter/extension cables to allow the user to connect multiple lamps to one power supply. I used 14-16awg wire throughout the cable assembly so up to 5 lamps can be connected with these cables. I typically use a heatgun to preheat the exposed parts of the wires, then move in with a soldering iron to actually apply the solder. I then finish the task by applying heat shrink and pump it full with hot glue to provide an even better mechanical connection.</p>
+
+    <h1>Soldering Setups</h1>
+    <p>This is a documentation of some of the places I have soldered.</p>
+
+    <h3>Boston Soldering Setup</h3>
+    <div class="gallery">
+        <div class="gallery-item">
+            <img src="./boston-setup.jpg">
+            <p>I was living in Boston for a few weeks and had to make do. The table surface was moldy so had to use trashcan lid to stabilize it.</p>
+        </div>
+    </div>
+
+    <h3>Berkeley Apartment Setup</h3>
+    <div class="gallery">
+        <div class="gallery-item">
+            <img src="./berk-apt.jpg">
+            <p>I found a loft bed on the side of the road and put my desk under it so I could hang stuff off the ceiling for extra utility.</p>
+        </div>
+    </div>
+
+    <h3>On a precariously balanced LED strip</h3>
+    <div class="gallery">
+        <div class="gallery-item">
+            <img src="./led-pipe.jpg">
+            <p></p>
+        </div>
+    </div>
+
+</div>
+</body>
